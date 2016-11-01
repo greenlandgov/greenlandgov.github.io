@@ -36,19 +36,23 @@
   独立社区服务、<br>
   生命保障、超时代科技、娱乐/文化输出
 
+<br><br>
 
-社区信用点介绍：
-
+社区信用点介绍：<br>
+<br>
 The credit point is suitable for every citizen and every organization .
 <br>
 信用点适用于任何公民和企业组织
+<br>
 <br>
 未来是信任体系的社会,快速接入,透明,多重等级的信任体系有助于新桃源的高效率发展,我们在给我们负责范围内的企业及个人进行信用评级 我们会给企业在环保、效率、扶持、信用、潜力、组织需求等各个维度进行综合评分。
 <br>
 <br>
 每月向 1CGRgj6888Vv3WHZQxiUttmpfcJ5EzDGSs <a href="https://github.com/greenlandgov/greenlandgov.github.io/blob/master/btc.jpg?raw=true">二维码图片</a> 
 发送 100mBTC (1mBTC=0.0001BTC) , 申请更新信用记录分, 同时向 greenlandapply@gmail.com 提交相关申请材料 
-<br>
+<br><br>
+每月信用分如未及时更新,会降低 0.9 倍,n个月后 降为 0.9^n 分(n次方).
+<br><br>
 申请完成时,会返回一定数量的比特币，规则如下：<br>
 BAC.D mBTC , BA 代表该企业被社区的控制程度，A为主评级，B为次评级　总分10A+B，<br>
 根据信任程度（每月利润与缴费对比，企业每月缴费可超过 100mBTC， 无上限）、学习程度（了解组织的核心思想与接受组织安排的任务执行程度），产生此信息，<br>
@@ -59,13 +63,43 @@ a b 暂定　0.5 , 0.6 <br>
 意味着　：受控等级6 信用评分8　的企业　较　受控等级８ 信用评分６　的企业排名靠前。　<br>
 <br>
 详细的信用查询方式如下：<br>
+1、查询到企业对应的新桃源比特币账号，可通过邮件查询，或企业自主公布的账号<br>
+2、在 blockchain.info 网站中查询 新桃源主地址发送给该地址的交易数据 <a href="https://blockchain.info/address/1CGRgj6888Vv3WHZQxiUttmpfcJ5EzDGSs" target="_blank">
+https://blockchain.info/address/1CGRgj6888Vv3WHZQxiUttmpfcJ5EzDGSs</a><br>
+3、填入返回的数据 如 0.1795 BTC ,1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<div style="margin-left:20px">
+	BTC：<br>
+	<input id="BTCmount"/>  <br>
+	上次更新距当前的月数：<br>
+	<input id="time"/>  <br>
+	<button onclick="calc_credit()">计算信用等级</button>
+<div id="info_out"></div>
+<script>
+	function calc_credit(){
+		
+		mount = document.getElementById("BTCmount")
+		credit = ((mount.value*10000) %100) /10
+		contrl_A = Math.floor(((mount.value*10000) /100) %10)
+		contrl_B = Math.floor(mount.value*10)
+		contrl = (contrl_A*10+contrl_B)/10
+		info = document.getElementById("info_out")
+		time = document.getElementById("time")
+		//	2016-11-01
+		T = Math.pow(0.9,time.value)
+		contrl = T * contrl
+		credit = T * credit
+		score =contrl*0.5+ credit *0.6
+		info_disp = "受控评级： "+ contrl + " （10分满分）<br>"
+		info_disp += "信用评级： "+ credit + "（10分满分）<br>"
+		info_disp += "综合排序分： "+ score + "<br>"
+		info.innerHTML = info_disp;
+		
+	}
 
+</script>
+</div>
 <br>
 
-<br>
-<br>
-每月信用分如未及时更新,会降低 0.9 倍,n个月后 降为 0.9^n 分(n次方).
-<br>
 <br>
 向 greenlandapply@gmail.com 发送如下指令可查看当前的信用记录：
 <br><br>
